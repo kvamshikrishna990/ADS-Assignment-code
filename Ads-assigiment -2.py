@@ -12,9 +12,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# Read the CSV file into a DataFrame
+# Reading the CSV file into ap
 ap = pd.read_csv('Ads_2.csv')
-print(ap.head(10))
+print(ap.head(11))
 
 
 print(ap.describe())
@@ -37,7 +37,7 @@ column_name = {
     '2022 [YR2022]': '2022'
 }
 
-# Rename the columns using the defined mapping
+# Renaming the columns 
 ap.rename(columns=column_name, inplace=True)
 
 
@@ -119,7 +119,7 @@ def plot_irrigation_data(irrigation_data, years, colormap='viridis'):
     plt.figure(figsize=(10, 6))
     df_irrigation.plot(kind='bar', width=0.8, colormap=colormap)
 
-    # Add labels and title
+    # Adding labels and titles
     plt.xlabel('Year')
     plt.ylabel('Percentage of Agricultural Irrigation')
     plt.title('Agricultural Irrigation Data ({}-{})'.format(min(years), max(years)))
@@ -143,13 +143,13 @@ def plot_irrigation_line_chart(irrigation_data, countries, years):
 
     """
     # Create a size of figure
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize = (10, 6))
 
     # Plot a line for each country
-    for country in countries:
-        plt.plot(years, irrigation_data[country], label=country, marker='o')
+    for country in countries :
+        plt.plot(years , irrigation_data[country], label = country , marker ='o')
 
-    # Add labels and title
+    # Adding labels and title
     plt.title(
         'Agricultural Irrigation Area (%) Over Years ({}-{})'.format(min(years), max(years)))
     plt.xlabel('Year')
@@ -188,9 +188,9 @@ def plot_population_pie_chart(data, selected_year):
     # Draw a pie chart for the selected year of 2021.
     plt.figure(figsize=(10, 8))
     plt.pie(data_for_selected_year[selected_year], labels=data_for_selected_year['Country Name'],
-            autopct='%1.1f%%', startangle=90, colors=colors, wedgeprops=dict(width=0.4))
+            autopct = '%1.1f%%', startangle = 90, colors = colors, wedgeprops = dict(width = 0.4))
 
-    # Adding a circle at the center to make it look like a donut chart
+    # Adding a circle in the  center to make like a donut chart
     centre_circle = plt.Circle((0, 0), 0.70, fc='white')
     fig = plt.gcf()
     fig.gca().add_artist(centre_circle)
@@ -230,12 +230,12 @@ def plot_population_heatmap(countries, years, population_data, color_palette="co
     # Create a custom color palette
     colors = sns.color_palette(color_palette, as_cmap=True)
 
-    # Create a heatmap using Seaborn with custom color palette
-    plt.figure(figsize=(12, 8))
+    # Creating a heatmap using Seaborn with differnt colours
+    plt.figure(figsize = (12, 8))
     sns.heatmap(heatmap_data, annot=True, cmap=colors, fmt='g',
                 linewidths=.5, cbar_kws={'label': 'Population'})
 
-    # Add labels and title
+    # Adding labels and title
     plt.xlabel('Years')
     plt.ylabel('Countrys')
     plt.title('Population Heatmap ({}-{})'.format(min(years), max(years)))
